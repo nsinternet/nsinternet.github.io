@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Internet Speed Test</title>
+</head>
+<body>
+    <h1>Internet Speed Test</h1>
+    <button onclick="runSpeedTest()">Run Speed Test</button>
+    <p id="speedResults"></p>
+
+    <script>
+        function runSpeedTest() {
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', 'https://example.com/testfile.bin', true); // Replace 'example.com/testfile.bin' with a URL of a large file to download
+            xhr.responseType = 'blob';
+
+            var startTime, endTime;
+
+            xhr.onloadstart = function () {
+                startTime = new Date().getTime();
+            };
+
+            xhr.onloadend = function () {
+                endTime = new Date().getTime();
+                var duration = (endTime - startTime) / 1000; // Convert milliseconds to seconds
+                var fileSize = xhr.response.size; // Size of the downloaded file in bytes
+                var speedMbps = (fileSize / duration) * 8 / (1024 * 1024); // Calculate speed in Mbps
+
+                document.getElementById("speedResults").innerHTML = "Download Speed: " + speedMbps.toFixed(2) + " Mbps";
+            };
+
+            xhr.send();
+        }
+    </script>
+</body>
+</html>
