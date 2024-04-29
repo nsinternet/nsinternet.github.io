@@ -4,56 +4,19 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Internet Speed Test</title>
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        background-color: #f5f5f5;
-    }
-
-    .container {
-        text-align: center;
-    }
-
-    .result {
-        font-size: 20px;
-        margin-top: 20px;
-    }
-
-    button {
-        padding: 10px 20px;
-        font-size: 16px;
-        background-color: #007bff;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-    }
-
-    button:hover {
-        background-color: #0056b3;
-    }
-</style>
 </head>
 <body>
-    <div class="container">
-        <h1>Internet Speed Test</h1>
-        <button onclick="runSpeedTest()">Run Speed Test</button>
-        <div class="result" id="speedResults"></div>
-    </div>
+    <h1>Internet Speed Test</h1>
+    <button onclick="runSpeedTest()">Run Speed Test</button>
+    <p id="speedResults"></p>
 
     <script>
         function runSpeedTest() {
             var xhr = new XMLHttpRequest();
+            var startTime, endTime;
+
             xhr.open('GET', 'https://speedtest.tele2.net/100MB.zip', true); // Test file URL
             xhr.responseType = 'blob';
-
-            var startTime, endTime;
 
             xhr.onloadstart = function () {
                 startTime = new Date().getTime();
