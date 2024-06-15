@@ -3,36 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Internet Speed Test</title>
+<title> Download Films</title>
 </head>
 <body>
-    <h1>Internet Speed Test</h1>
-    <button> <a href="https://www.speedtest.net/"> Run Speed Test</a></button>
-    <p id="speedResults"></p>
+    <a href="https://drive.google.com/drive/folders/1-RYM2dXKVOL7hktxB0tGJSJ7cvU_S9dS?usp=drive_link" >Download FIlms</a>
+    
 
-    <script>
-        function runSpeedTest() {
-            var xhr = new XMLHttpRequest();
-            var startTime, endTime;
-
-            xhr.open('GET', 'https://speedtest.tele2.net/100MB.zip', true); // Test file URL
-            xhr.responseType = 'blob';
-
-            xhr.onloadstart = function () {
-                startTime = new Date().getTime();
-            };
-
-            xhr.onloadend = function () {
-                endTime = new Date().getTime();
-                var duration = (endTime - startTime) / 1000; // Convert milliseconds to seconds
-                var fileSize = xhr.response.size; // Size of the downloaded file in bytes
-                var speedMbps = (fileSize / duration) * 8 / (1024 * 1024); // Calculate speed in Mbps
-
-                document.getElementById("speedResults").innerHTML = "Download Speed: " + speedMbps.toFixed(2) + " Mbps";
-            };
-
-            xhr.send();
-        }
-    </script>
+ 
 </body>
 </html>
